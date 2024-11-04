@@ -1,0 +1,35 @@
+pipeline:
+  name: Sample_pipeline
+  identifier: Sample_pipeline
+  projectIdentifier: Jira_update
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1728911894082
+        repoName: go-pipeline-sample
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Welcome
+                  identifier: Welcome
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
